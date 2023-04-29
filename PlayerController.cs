@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
 
         // Loop through all colliders and apply damage to enemies
-       foreach (Collider enemy in hitEnemies)
+       foreach (Collider enemy in hitColliders)
             {
                 if (enemy.CompareTag("enemy"))
                 {
