@@ -45,16 +45,15 @@ public class PlayerController : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
 
         // Loop through all colliders and apply damage to enemies
-        foreach (Collider hitCollider in hitColliders)
-        {
-            // Check if the collider belongs to an enemy
-            EnemyController enemy = hitCollider.GetComponent<EnemyController>();
-            if (enemy != null)
+       foreach (Collider enemy in hitEnemies)
             {
-                // Apply damage to the enemy
-                enemy.TakeDamage(attackDamage);
+                if (enemy.CompareTag("enemy"))
+                {
+                    // Deal damage to the enemy
+                    //enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
+                    print("Enemy hit!");
+                }
             }
-        }
     }
 
     void OnDrawGizmosSelected()
