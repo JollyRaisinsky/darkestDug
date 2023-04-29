@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour
         // Move player in direction they are facing
         transform.position += direction * moveSpeed * Time.deltaTime;
         click();
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Attack();
+        }
     }
 
     void click() {
@@ -53,6 +57,7 @@ public class PlayerController : MonoBehaviour
                     //enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
                     print("Enemy hit!");
                 }
+                print("Enemy not hit!");
             }
     }
 
