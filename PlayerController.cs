@@ -3,22 +3,18 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public float turnSpeed = 100f;
 
     void Update()
     {
-        // Get input from arrow keys
-        
-        float horizontalInput = Input.GetAxisRaw("Vertical");
-        float verticalInput = Input.GetAxis("Horizontal");
+        // Get input from arrow keys or joystick
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
 
-        // Calculate new position
-        float angle = verticalInput * turnSpeed * Time.deltaTime;
-        Vector3 newPosition = transform.position + new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0f, 0f);
+        // Calculate movement direction
+        Vector3 direction = new Vector3(horizontalInput, 0f, verticalInput);
+        direction = transform.TransformDirection(direction);
 
-        // Move player to new position
-        transform.position = newPosition;
-        transform.Rotate(0f, angle, 0f);
-
+        // Move player in direction they are facing
+        transform.position += direction * moveSpeed * Time.deltaTime;
     }
 }
