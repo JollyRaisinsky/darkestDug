@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
         click();
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Attack();
+            print("your mom");
         }
     }
 
@@ -61,12 +61,7 @@ public class PlayerController : MonoBehaviour
             }
     }
 
-    void OnDrawGizmosSelected()
-    {
-        // Draw a sphere around the player to show the range of the attack
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-    }
+   
 }
 
 
