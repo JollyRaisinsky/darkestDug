@@ -3,7 +3,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    
+    public float attackRange = 2f;
+    public int attackDamage = 10;
+
+
+
     void Update()
     {
         // Get input from arrow keys or joystick
@@ -35,6 +39,30 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void Attack()
+    {
+        // Get all colliders within range of the attack
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
+
+        // Loop through all colliders and apply damage to enemies
+        foreach (Collider hitCollider in hitColliders)
+        {
+            // Check if the collider belongs to an enemy
+            EnemyController enemy = hitCollider.GetComponent<EnemyController>();
+            if (enemy != null)
+            {
+                // Apply damage to the enemy
+                enemy.TakeDamage(attackDamage);
+            }
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        // Draw a sphere around the player to show the range of the attack
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
 }
 
 
