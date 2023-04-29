@@ -16,10 +16,10 @@ public class PlayerController : MonoBehaviour
 
         // Move player in direction they are facing
         transform.position += direction * moveSpeed * Time.deltaTime;
-        attack();
+        click();
     }
 
-    void attack() {
+    void click() {
         if (Input.GetMouseButtonDown(0))
         {
             // Cast a ray from the mouse position
