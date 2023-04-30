@@ -1,10 +1,7 @@
 using UnityEngine;
 
-public class BattleAxe : MonoBehaviour
+public class HealthObject : MonoBehaviour
 {
-    public float newAttackRange = 3f;
-    public int newAttackDamage = 75;
-    public float newAttackCooldown = 5f;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,10 +12,8 @@ public class BattleAxe : MonoBehaviour
             PlayerController player = other.GetComponent<PlayerController>();
 
             // Change the values of the variables in the PlayerController script
-            player.attackRange = newAttackRange;
-            player.attackDamage = newAttackDamage;
-            player.attackCooldown = newAttackCooldown;
-
+            player.health += 10;
+            
             // Destroy the battle axe object
             Destroy(gameObject);
         }
