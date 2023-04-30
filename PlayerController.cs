@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     
     public int health = 100;
 
-    public glowstick glowstick;
+    public GameObject glowstick = null;
     
     private bool isAttacking = false;
     private float lastAttackTime = 0f;
