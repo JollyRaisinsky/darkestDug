@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     {
         healthbar.SetMaxHealth(health);
         basic_swing = GetComponent<AudioSource>();
-
+        
     }
 
     public void TakeDamage() {

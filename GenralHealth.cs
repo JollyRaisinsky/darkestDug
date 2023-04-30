@@ -6,7 +6,6 @@ public class GenralHealth : MonoBehaviour
     public int currentHealth;
     public GameObject prefabToSpawn = null;
 
-
     private void Start()
     {
         currentHealth = maxHealth;

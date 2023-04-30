@@ -11,13 +11,14 @@ public class PlayerController : MonoBehaviour
     public float attackRange = 2f;
     public int attackDamage = 50;
     public float attackCooldown = 1f;
+    private bool isAttacking = false;
+    private float lastAttackTime = 0f;
     
     public int health = 100;
 
     public GameObject glowstick = null;
     
-    private bool isAttacking = false;
-    private float lastAttackTime = 0f;
+   
 
     void Start()
     {
