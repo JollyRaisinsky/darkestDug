@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GenralHealth : MonoBehaviour
+public class AttackStuff : MonoBehaviour
 {
     public float attackRange = 2f;
     public int attackDamage = 50;
