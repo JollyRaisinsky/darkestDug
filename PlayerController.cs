@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float turnSpeed = 10f;
     public float attackRange = 2f;
     public int attackDamage = 50;
     public int health = 100;
@@ -24,16 +25,21 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        //camera 
+        transform.rotation = Quaternion.Euler(0, Camera.main.transform.rotation.eulerAngles.y, 0);
+
         // Get input from arrow keys or joystick
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        // Calculate movement direction
-        Vector3 direction = new Vector3(horizontalInput, 0f, verticalInput);
-        direction = transform.TransformDirection(direction);
+         // Rotate player based on horizontal input
+        transform.Rotate(0f, horizontalInput * rotateSpeed * Time.deltaTime, 0f);
 
-        // Move player in direction they are facing
+        // Move player forward or backward based on vertical input
+        Vector3 direction = transform.forward * verticalInput;
         transform.position += direction * moveSpeed * Time.deltaTime;
+
+
         click();
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -75,15 +81,7 @@ public class PlayerController : MonoBehaviour
                 GenralHealth enemy = hitCollider.GetComponent<GenralHealth>();
                 enemy.TakeDamage(attackDamage);
             }
-            // Get the tag of the hit collider
-            //string colliderTag = hitCollider.tag;
             
-            // if(colliderTag != "Player" && colliderTag != "Untagged"){
-            //     print("F pressed!!!!!!!" + colliderTag + " hit!");
-            //     print("attack damage: " + attackDamage);
-            //     print("damage dealt: " + hitCollider.GetComponent<Enemy>().TakeDamage(attackDamage)
-            // }
-
             
         }
 
