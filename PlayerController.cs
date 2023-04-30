@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
          // Rotate player based on horizontal input
-        transform.Rotate(0f, horizontalInput * rotateSpeed * Time.deltaTime, 0f);
+        transform.Rotate(0f, horizontalInput * turnSpeed * Time.deltaTime, 0f);
 
         // Move player forward or backward based on vertical input
         Vector3 direction = transform.forward * verticalInput;
