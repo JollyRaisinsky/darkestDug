@@ -6,14 +6,20 @@ public class PlayerController : MonoBehaviour
     AudioSource basic_swing;
 
     public string weapon = "sword";
+    //string[] myArray = new string[5];
+
+
     public float moveSpeed = 5f;
     public float turnSpeed = 30f;
 
     public float attackRange = 2f;
     public int attackDamage = 50;
     public float attackCooldown = 2f;
+    private float healFactor = 1f;
+
     private bool isAttacking = false;
     private float lastAttackTime = 0f;
+    
     
     public int health = 100;
 
@@ -26,7 +32,12 @@ public class PlayerController : MonoBehaviour
         basic_swing = GetComponent<AudioSource>();
     }
 
-
+    public void Heal(int healAmount)
+    {
+        healAmount = (int)(healAmount * healFactor);
+        health += healAmount;
+        print("Healed! Health is now " + health);
+    }
     public void TakeDamage(int damage)
     {
         health -= damage;

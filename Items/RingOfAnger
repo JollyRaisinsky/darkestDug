@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public class RingOfSwift : MonoBehaviour
+public class RingOfAnger : MonoBehaviour
 {
 
-    public string Ring  = "RingOfSwift";
+    public string Ring = "RingOfAnger";
     public float modification = 1.25f;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,8 +16,8 @@ public class RingOfSwift : MonoBehaviour
             PlayerController player = other.GetComponent<PlayerController>();
 
             // Change the values of the variables in the PlayerController script
-            player.moveSpeed *= modification;
-            player.attackCooldown /= modification;
+            player.attackCooldown *= modification;
+            
             // Destroy the battle axe object
             Destroy(gameObject);
         }
