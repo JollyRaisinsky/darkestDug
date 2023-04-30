@@ -32,7 +32,7 @@ public class GenralHealth : MonoBehaviour
                 if (colliderTag == "Player")
                 {
                     // Apply damage to the enemy
-                    GenralHealth Player = hitCollider.GetComponent<GenralHealth>();
+                    PlayerController Player = hitCollider.GetComponent<PlayerController>();
                     Player.TakeDamage(attackDamage);
                 }
             }
