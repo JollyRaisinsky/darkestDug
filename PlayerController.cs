@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public int attackDamage = 50;
     public int health = 100;
 
+    private bool isAttacking = false;
+    private float lastAttackTime = 0f;
 
     public void TakeDamage(int damage)
     {
@@ -99,7 +101,7 @@ public class PlayerController : MonoBehaviour
 
 
     }
-    
+
     // Attack
     void Attack()
     {
