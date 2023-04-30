@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         click();
         if (Input.GetKeyDown(KeyCode.F))
         {
-            print("your mom");
+           Attack();
         }
     }
 
@@ -69,16 +69,7 @@ public class PlayerController : MonoBehaviour
             string colliderTag = hitCollider.tag;
 
             // Check if the collider belongs to an enemy
-            if (colliderTag == "enemy")
-            {
-                // Deal damage to the enemy
-                //hitCollider.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
-                print("Enemy hit!");
-            }
-            else
-            {
-                print("Object with tag " + colliderTag + " hit!");
-            }
+            print("Object with tag " + colliderTag + " hit!");
         }
 
     }
@@ -93,13 +84,8 @@ public class PlayerController : MonoBehaviour
     Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
     foreach (Collider hitCollider in hitColliders)
     {
-        // Check if the collider belongs to an enemy
-        EnemyController enemy = hitCollider.GetComponent<EnemyController>();
-        if (enemy != null)
-        {
             Gizmos.color = Color.yellow;
             Gizmos.DrawSphere(enemy.transform.position, 0.5f);
-        }
     }
 }
 
