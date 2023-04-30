@@ -16,7 +16,7 @@ public class RingOfAnger : MonoBehaviour
             PlayerController player = other.GetComponent<PlayerController>();
 
             // Change the values of the variables in the PlayerController script
-            player.attackCooldown *= modification;
+            player.attackDamage *= (int)modification;
             
             // Destroy the battle axe object
             Destroy(gameObject);
