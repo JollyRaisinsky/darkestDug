@@ -8,6 +8,7 @@ public class Sword : MonoBehaviour
     public int newAttackDamage = 50;
     public float newAttackCooldown = 2f;
     public float moveSpeed = 5f;
+    public int health = 200;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,6 +24,7 @@ public class Sword : MonoBehaviour
             player.attackCooldown = newAttackCooldown;
             player.moveSpeed = moveSpeed;
             player.weapon = weapon;
+            player.health = health;
 
 
             // Destroy the battle axe object
