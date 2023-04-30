@@ -79,14 +79,6 @@ public class PlayerController : MonoBehaviour
     // Draw a wire sphere around the player to show the range of the attack
     Gizmos.color = Color.red;
     Gizmos.DrawWireSphere(transform.position, attackRange);
-
-    // Draw a sphere for each enemy within range
-    Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
-    foreach (Collider hitCollider in hitColliders)
-    {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawSphere(enemy.transform.position, 0.5f);
-    }
 }
 
 }
