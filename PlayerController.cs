@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
     void click() {
         if (Input.GetMouseButtonDown(0))
         {
-            print(weapon)
+            print(weapon);
         }
         
         
