@@ -4,7 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float attackRange = 2f;
-    public int attackDamage = 10;
+    public int attackDamage = 50;
     public int health = 100;
 
 
@@ -63,25 +63,39 @@ public class PlayerController : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
 
         // Loop through all colliders and apply damage to enemies
-       foreach (Collider hitCollider in hitColliders)
+        foreach (Collider hitCollider in hitColliders)
         {
-            // Get the tag of the hit collider
-            string colliderTag = hitCollider.tag;
-            if(colliderTag != "Player" && colliderTag != "Untagged"){
-                print("F pressed!!!!!!!" + colliderTag + " hit!");
+
+             string colliderTag = hitCollider.tag;
+
+            // Check if the collider belongs to an enemy
+            if (colliderTag == "enemy")
+            {
+                // Apply damage to the enemy
+                GenralHealth enemy = hitCollider.GetComponent<GenralHealth>();
+                enemy.TakeDamage(attackDamage);
             }
+            // Get the tag of the hit collider
+            //string colliderTag = hitCollider.tag;
+            
+            // if(colliderTag != "Player" && colliderTag != "Untagged"){
+            //     print("F pressed!!!!!!!" + colliderTag + " hit!");
+            //     print("attack damage: " + attackDamage);
+            //     print("damage dealt: " + hitCollider.GetComponent<Enemy>().TakeDamage(attackDamage)
+            // }
 
             
         }
 
     }
-
-   void OnDrawGizmosSelected()
-{
-    // Draw a wire sphere around the player to show the range of the attack
-    Gizmos.color = Color.red;
-    Gizmos.DrawWireSphere(transform.position, attackRange);
-}
+    // Draw a sphere around the player to show the range of the attack
+    //It doesn't work I don't know why
+    void OnDrawGizmosSelected()
+    {
+        // Draw a wire sphere around the player to show the range of the attack
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
 
 }
 
