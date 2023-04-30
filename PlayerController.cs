@@ -4,10 +4,14 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float turnSpeed = 30f;
+
     public float attackRange = 2f;
     public int attackDamage = 50;
+    public float attackCooldown = 1f;
+    
     public int health = 100;
 
+    
     private bool isAttacking = false;
     private float lastAttackTime = 0f;
 
