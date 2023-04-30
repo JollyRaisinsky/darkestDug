@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public float attackRange = 2f;
     public int attackDamage = 50;
-    public float attackCooldown = 1f;
+    public float attackCooldown = 2f;
     private bool isAttacking = false;
     private float lastAttackTime = 0f;
     

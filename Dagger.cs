@@ -1,19 +1,20 @@
 using UnityEngine;
 
-public class BattleAxe : MonoBehaviour
+public class Dagger : MonoBehaviour
 {
+    
 
-    public float newAttackRange = 3f;
-    public int newAttackDamage = 75;
-    public float newAttackCooldown = 5f;
-    public float moveSpeed = 3f;
+    public float newAttackRange = 1.25f;
+    public int newAttackDamage = 25;
+    public float newAttackCooldown = .5f;
+    public float moveSpeed = 7f;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             
-            // Get the PlayerController component from the player
+            // Get the PlayerController component from the player   
             PlayerController player = other.GetComponent<PlayerController>();
 
             // Change the values of the variables in the PlayerController script
@@ -21,7 +22,6 @@ public class BattleAxe : MonoBehaviour
             player.attackDamage = newAttackDamage;
             player.attackCooldown = newAttackCooldown;
             player.moveSpeed = moveSpeed;
-
 
             // Destroy the battle axe object
             Destroy(gameObject);

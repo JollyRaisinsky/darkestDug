@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class BattleAxe : MonoBehaviour
+public class Sword : MonoBehaviour
 {
 
-    public float newAttackRange = 3f;
-    public int newAttackDamage = 75;
-    public float newAttackCooldown = 5f;
-    public float moveSpeed = 3f;
+    public float newAttackRange = 5f;
+    public int newAttackDamage = 50;
+    public float newAttackCooldown = 2f;
+    public float moveSpeed = 5f;
 
     private void OnTriggerEnter(Collider other)
     {
