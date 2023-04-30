@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class HealthObject : MonoBehaviour
-
+{
 
     private void OnTriggerEnter(Collider other)
     {
