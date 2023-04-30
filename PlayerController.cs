@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public float turnSpeed = 10f;
+    public float turnSpeed = 30f;
     public float attackRange = 2f;
     public int attackDamage = 50;
     public int health = 100;
@@ -40,11 +40,10 @@ public class PlayerController : MonoBehaviour
         transform.position += direction * moveSpeed * Time.deltaTime;
 
 
+
+        AttackV2();
         click();
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-           Attack();
-        }
+        
     }
 
     void click() {
@@ -63,26 +62,68 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Attack cooldown
+    void AttackV2()
+    {
+        // Attack
+        if (!isAttacking && Time.time - lastAttackTime > attackCooldown && Input.GetKeyDown(KeyCode.F))
+        {
+            isAttacking = true;
+            lastAttackTime = Time.time;
+
+            // Get all colliders within range of the attack
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
+
+            // Loop through all colliders and apply damage to enemies
+            foreach (Collider hitCollider in hitColliders)
+            {
+                string colliderTag = hitCollider.tag;
+
+                // Check if the collider belongs to an enemy
+                if (colliderTag == "Enemy")
+                {
+                    // Apply damage to the enemy
+                    GenralHealth enemy = hitCollider.GetComponent<GenralHealth>();
+                    enemy.TakeDamage(attackDamage);
+                }
+            }
+        }
+
+
+        // Reset isAttacking flag after attackCooldown time
+        if (isAttacking && Time.time - lastAttackTime > attackCooldown)
+        {
+            isAttacking = false;
+        }
+    
+
+
+    }
+    
+    // Attack
     void Attack()
     {
-        // Get all colliders within range of the attack
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
-
-        // Loop through all colliders and apply damage to enemies
-        foreach (Collider hitCollider in hitColliders)
+        if (Input.GetKeyDown(KeyCode.F))
         {
+            // Get all colliders within range of the attack
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
 
-             string colliderTag = hitCollider.tag;
-
-            // Check if the collider belongs to an enemy
-            if (colliderTag == "Enemy")
+            // Loop through all colliders and apply damage to enemies
+            foreach (Collider hitCollider in hitColliders)
             {
-                // Apply damage to the enemy
-                GenralHealth enemy = hitCollider.GetComponent<GenralHealth>();
-                enemy.TakeDamage(attackDamage);
+
+                string colliderTag = hitCollider.tag;
+
+                // Check if the collider belongs to an enemy
+                if (colliderTag == "Enemy")
+                {
+                    // Apply damage to the enemy
+                    GenralHealth enemy = hitCollider.GetComponent<GenralHealth>();
+                    enemy.TakeDamage(attackDamage);
+                }
+                
+                
             }
-            
-            
         }
 
     }
