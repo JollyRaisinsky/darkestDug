@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
+    AudioSource basic_swing;
+
     public float moveSpeed = 5f;
     public float turnSpeed = 30f;
 
@@ -15,6 +18,10 @@ public class PlayerController : MonoBehaviour
     private bool isAttacking = false;
     private float lastAttackTime = 0f;
 
+    Start()
+    {
+        basic_swing = GetComponent<AudioSource>();
+    }
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -73,6 +80,11 @@ public class PlayerController : MonoBehaviour
         // Attack
         if (!isAttacking && Time.time - lastAttackTime > attackCooldown && Input.GetKeyDown(KeyCode.F))
         {
+            // Play attack animation
+
+            // Play attack sound
+            basic_swing.Play();
+            // Set isAttacking flag to true and save the time of the attack
             isAttacking = true;
             lastAttackTime = Time.time;
 
