@@ -18,10 +18,12 @@ public class PlayerController : MonoBehaviour
     private bool isAttacking = false;
     private float lastAttackTime = 0f;
 
-    Start()
+    void Start()
     {
         basic_swing = GetComponent<AudioSource>();
     }
+
+
     public void TakeDamage(int damage)
     {
         health -= damage;
