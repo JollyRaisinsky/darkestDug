@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HealthObject : MonoBehaviour
 {
-    public healthAmount = 100;
+    public int healthAmount = 100;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
