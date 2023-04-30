@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
    void Start()
     {
         healthbar.SetMaxHealth(health);
-        basic_swing = GetComponent<AudioSource>();
+        //basic_swing = GetComponent<AudioSource>();
         
     }
 
