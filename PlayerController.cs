@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
         AttackV2();
         click();
-        
+        print(isAttacking);
     }
 
     void click() {
