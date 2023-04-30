@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     
     public int health = 100;
 
+    public glowstick glowstick;
     
     private bool isAttacking = false;
     private float lastAttackTime = 0f;
@@ -58,6 +59,7 @@ public class PlayerController : MonoBehaviour
 
         AttackV2();
         click();
+        drop();
     }
 
     void click() {
@@ -75,7 +77,13 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
+    void drop()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            Instantiate(glowstick, transform.position, transform.rotation);
+        }
+    }
     // Attack cooldown
     void AttackV2()
     {
