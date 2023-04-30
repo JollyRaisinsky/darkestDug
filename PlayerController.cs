@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -6,22 +7,25 @@ public class PlayerController : MonoBehaviour
     AudioSource basic_swing;
 
     public string weapon = "sword";
+    public Image weaponImageUI; // reference to the image element for the weapon
+    public Sprite weaponImage; // reference to the sprite of the weapon
+
     //string[] myArray = new string[5];
 
 
     public float moveSpeed = 5f;
     public float turnSpeed = 30f;
-
     public float attackRange = 2f;
-    public int attackDamage = 50;
     public float attackCooldown = 2f;
     public float healFactor = 1f;
+    public int attackDamage = 50;
+    public int health = 100;
+
 
     private bool isAttacking = false;
     private float lastAttackTime = 0f;
     
     
-    public int health = 100;
 
     public GameObject glowstick = null;
     
@@ -30,6 +34,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         basic_swing = GetComponent<AudioSource>();
+        if (weaponImageUI != null)
+        {
+            weaponImageUI.sprite = weaponImage;
+        }
     }
 
     public void Heal(int healAmount)
