@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
              string colliderTag = hitCollider.tag;
 
             // Check if the collider belongs to an enemy
-            if (colliderTag == "enemy")
+            if (colliderTag == "Enemy")
             {
                 // Apply damage to the enemy
                 GenralHealth enemy = hitCollider.GetComponent<GenralHealth>();
