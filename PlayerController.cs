@@ -16,6 +16,11 @@ public class PlayerController : MonoBehaviour
     
     public int health = 100;
 
+    public bool powerRing = false;
+    public GameObject particlePrefab;
+    public float cooldownTime = 30f;
+    private float lastSpawnTime = 0f;
+
     public GameObject glowstick = null;
     
    
@@ -64,7 +69,22 @@ public class PlayerController : MonoBehaviour
     }
 
     void click() {
-        if (Input.GetMouseButtonDown(0))
+        if(powerRing == true)
+        {
+            if (Input.GetMouseButtonDown(0) && Time.time - lastSpawnTime > cooldownTime)
+            {
+                 if (Input.GetMouseButtonDown(0))
+                {
+                // Spawn the particle effect at the mouse position
+                Vector3 spawnPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
+
+                // Update the last spawn time
+                lastSpawnTime = Time.time;
+                }
+            }
+        }else{
+            if (Input.GetMouseButtonDown(0))
         {
             // Cast a ray from the mouse position
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -77,6 +97,8 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Clicked on object with tag: " + hit.collider.tag);
             }
         }
+        }
+        
     }
     void drop()
     {
@@ -128,7 +150,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // Attack
+    // Not relvent anymore
     void Attack()
     {
         if (Input.GetKeyDown(KeyCode.F))
