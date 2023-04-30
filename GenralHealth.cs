@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class GenralHealth : MonoBehaviour
 {
     public int maxHealth = 100;
