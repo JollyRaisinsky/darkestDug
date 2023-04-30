@@ -3,6 +3,7 @@ using UnityEngine;
 public class BattleAxe : MonoBehaviour
 {
 
+    public string weapon = "BattleAxe";
     public float newAttackRange = 3f;
     public int newAttackDamage = 75;
     public float newAttackCooldown = 5f;
@@ -21,6 +22,7 @@ public class BattleAxe : MonoBehaviour
             player.attackDamage = newAttackDamage;
             player.attackCooldown = newAttackCooldown;
             player.moveSpeed = moveSpeed;
+            player.weapon = weapon;
 
 
             // Destroy the battle axe object

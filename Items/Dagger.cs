@@ -4,6 +4,7 @@ public class Dagger : MonoBehaviour
 {
     
 
+    public string weapon = "dagger";
     public float newAttackRange = 1.25f;
     public int newAttackDamage = 25;
     public float newAttackCooldown = .5f;
@@ -22,6 +23,7 @@ public class Dagger : MonoBehaviour
             player.attackDamage = newAttackDamage;
             player.attackCooldown = newAttackCooldown;
             player.moveSpeed = moveSpeed;
+            player.weapon = weapon;
 
             // Destroy the battle axe object
             Destroy(gameObject);

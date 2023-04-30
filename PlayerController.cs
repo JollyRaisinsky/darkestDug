@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 
     AudioSource basic_swing;
 
+    public string weapon = "sword";
     public float moveSpeed = 5f;
     public float turnSpeed = 30f;
 
@@ -15,11 +16,6 @@ public class PlayerController : MonoBehaviour
     private float lastAttackTime = 0f;
     
     public int health = 100;
-
-    public bool powerRing = false;
-    public GameObject particlePrefab;
-    public float cooldownTime = 30f;
-    private float lastSpawnTime = 0f;
 
     public GameObject glowstick = null;
     
@@ -69,35 +65,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void click() {
-        if(powerRing == true)
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0) && Time.time - lastSpawnTime > cooldownTime)
-            {
-                 if (Input.GetMouseButtonDown(0))
-                {
-                // Spawn the particle effect at the mouse position
-                Vector3 spawnPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Instantiate(particlePrefab, spawnPosition, Quaternion.identity);
-
-                // Update the last spawn time
-                lastSpawnTime = Time.time;
-                }
-            }
-        }else{
-            if (Input.GetMouseButtonDown(0))
-        {
-            // Cast a ray from the mouse position
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            // Check if the ray hits an object with a tag
-            if (Physics.Raycast(ray, out hit) && hit.collider.tag != null)
-            {
-                // Print the tag of the object that was clicked
-                Debug.Log("Clicked on object with tag: " + hit.collider.tag);
-            }
+            print(weapon)
         }
-        }
+        
         
     }
     void drop()
