@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
             string colliderTag = hitCollider.tag;
 
             // Check if the collider belongs to an enemy
-            print("Object with tag " + colliderTag + " hit!");
+            print("F pressed!!!!!!!" + colliderTag + " hit!");
         }
 
     }
