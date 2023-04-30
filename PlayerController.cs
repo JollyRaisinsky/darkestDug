@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         {
             // Get the tag of the hit collider
             string colliderTag = hitCollider.tag;
-            if(colliderTag != "Player"){
+            if(colliderTag != "Player" && colliderTag != "Untagged"){
                 print("F pressed!!!!!!!" + colliderTag + " hit!");
             }
 
