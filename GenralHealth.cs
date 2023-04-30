@@ -15,7 +15,7 @@ public class GenralHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-
+        print(currentHealth);
         if (currentHealth <= 0)
         {
             
