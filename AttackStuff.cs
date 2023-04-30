@@ -31,7 +31,7 @@ public class AttackStuff : MonoBehaviour
                 // Check if the collider belongs to an enemy
                 if (colliderTag == "Player")
                 {
-                    // Apply damage to the enemy
+                    // Apply damage to the player
                     PlayerController Player = hitCollider.GetComponent<PlayerController>();
                     Player.TakeDamage(attackDamage);
                 }
