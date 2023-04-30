@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HealthObject : MonoBehaviour
+public class PowerRing : MonoBehaviour
 {
 
     private void OnTriggerEnter(Collider other)
