@@ -13,8 +13,7 @@ public class HealthObject : MonoBehaviour
 
             // Change the values of the variables in the PlayerController script
             player.health += healthAmount;
-            debut.text = "Health: " + player.health;
-            
+            print("Healed! Health is now " + player.health);
             // Destroy the battle axe object
             Destroy(gameObject);
         }
